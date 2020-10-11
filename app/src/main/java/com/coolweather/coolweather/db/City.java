@@ -1,9 +1,9 @@
 package com.coolweather.coolweather.db;
 
 
-import org.litepal.exceptions.DataSupportException;
+import org.litepal.crud.LitePalSupport;
 
-public class City {
+public class City extends LitePalSupport {
     private int id;//实体类id
     private String cityName;//记录城市名称
     private int cityCode;//记录城市代码
