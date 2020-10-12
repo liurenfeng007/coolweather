@@ -4,7 +4,7 @@ import org.litepal.crud.LitePalSupport;
 
 public class County extends LitePalSupport {
     private int id; //实体类id
-    private String county;//区县名称
+    private String countyName;//区县名称
     private int countyCode;//区县代码
     private String weatherId;//区县天气信息
     private int cityId;//区县上级市代码
@@ -13,8 +13,8 @@ public class County extends LitePalSupport {
         this.id = id;
     }
 
-    public void setCounty(String county) {
-        this.county = county;
+    public void setCountyName(String county) {
+        this.countyName = countyName;
     }
 
     public void setCountyCode(int countyCode) {
@@ -34,7 +34,7 @@ public class County extends LitePalSupport {
     }
 
     public String getCounty() {
-        return county;
+        return countyName;
     }
 
     public int getCountyCode() {
