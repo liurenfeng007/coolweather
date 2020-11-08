@@ -1,43 +1,50 @@
 package com.coolweather.coolweather.db;
 
 
-import org.litepal.crud.LitePalSupport;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
-public class City extends LitePalSupport {
-    private int id;//实体类id
-    private String cityName;//记录城市名称
-    private int cityCode;//记录城市代码
-    private int provinceId;//记录上级省代码
-
+@Entity
+public class City {
+    @Id
+    private  int id;
+    private String cityName;
+    private int cityCode;
+    private int provinceId;
+    @Generated(hash = 1938565176)
+    public City(int id, String cityName, int cityCode, int provinceId) {
+        this.id = id;
+        this.cityName = cityName;
+        this.cityCode = cityCode;
+        this.provinceId = provinceId;
+    }
+    @Generated(hash = 750791287)
+    public City() {
+    }
     public int getId() {
-        return id;
+        return this.id;
     }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public int getCityCode() {
-        return cityCode;
-    }
-
-    public int getProvinceId() {
-        return provinceId;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
-
+    public String getCityName() {
+        return this.cityName;
+    }
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
-
+    public int getCityCode() {
+        return this.cityCode;
+    }
     public void setCityCode(int cityCode) {
         this.cityCode = cityCode;
     }
-
+    public int getProvinceId() {
+        return this.provinceId;
+    }
     public void setProvinceId(int provinceId) {
         this.provinceId = provinceId;
     }
+
 }
