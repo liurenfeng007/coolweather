@@ -16,17 +16,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // GreenDao
+        initGreenDao();
     }
 
-    private void initGreenDao(){
+    private void initGreenDao() {
         // 创建数据库cool_weather
-        DaoMaster.DevOpenHelper helper=new DaoMaster.DevOpenHelper(this,"cool_weather");
-        SQLiteDatabase database=helper.getWritableDatabase();
-        DaoMaster daoMaster=new DaoMaster(database);
-        mDaoSession =daoMaster.newSession();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "cool_weather");
+        SQLiteDatabase database = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(database);
+        mDaoSession = daoMaster.newSession();
     }
 
-    public static DaoSession getmDaoSession() {
+    public static DaoSession getDaoSession() {
         return mDaoSession;
     }
 }
