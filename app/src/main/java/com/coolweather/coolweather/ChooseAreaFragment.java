@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.CityDao;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.CountyDao;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoManager;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.ProvinceDao;
 import com.coolweather.coolweather.db.City;
@@ -116,8 +117,8 @@ public class ChooseAreaFragment extends Fragment {
     private void queryProvinces() {
         titleText.setText("中国");
         backButton.setVisibility(View.GONE);
-        DaoSession daoSession = MainActivity.getDaoSession();
-        ProvinceDao provinceDao = daoSession.getProvinceDao();
+//        ProvinceDao provinceDao = DaoManager.getInstance(getContext()).getDaoSession().getProvinceDao();
+        ProvinceDao provinceDao = MainActivity.getDaoSession().getProvinceDao();
         provinceList = provinceDao.loadAll();
         if (provinceList.size() > 0) {
             dataList.clear();
@@ -137,8 +138,7 @@ public class ChooseAreaFragment extends Fragment {
     private void queryCities() {
         titleText.setText(selectedProvince.getProvinceName());
         backButton.setVisibility(View.VISIBLE);
-        DaoSession daoSession = MainActivity.getDaoSession();
-        CityDao cityDao = daoSession.getCityDao();
+        CityDao cityDao = MainActivity.getDaoSession().getCityDao();
         cityList = cityDao.queryBuilder().
                 where(CityDao.Properties.ProvinceId.eq(selectedProvince.getId())).list();
         if (cityList.size() > 0) {
@@ -159,8 +159,7 @@ public class ChooseAreaFragment extends Fragment {
     private void queryCounties() {
         titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
-        DaoSession daoSession = MainActivity.getDaoSession();
-        CountyDao countyDao = daoSession.getCountyDao();
+        CountyDao countyDao = MainActivity.getDaoSession().getCountyDao();
         countyList = countyDao.queryBuilder().
                 where(CountyDao.Properties.CityId.eq(selectedCity.getId())).list();
         if (countyList.size() > 0) {

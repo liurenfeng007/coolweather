@@ -25,8 +25,8 @@ public class ProvinceDao extends AbstractDao<Province, Integer> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, int.class, "id", true, "ID");
-        public final static Property ProvinceName = new Property(1, String.class, "provinceName", false, "PROVINCE_NAME");
-        public final static Property ProvinceCode = new Property(2, int.class, "provinceCode", false, "PROVINCE_CODE");
+        public final static Property ProvinceName = new Property(1, String.class, "provinceName", false, "province_name");
+        public final static Property ProvinceCode = new Property(2, int.class, "provinceCode", false, "province_Code");
     }
 
 
@@ -43,8 +43,8 @@ public class ProvinceDao extends AbstractDao<Province, Integer> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PROVINCE\" (" + //
                 "\"ID\" INTEGER PRIMARY KEY NOT NULL ," + // 0: id
-                "\"PROVINCE_NAME\" TEXT," + // 1: provinceName
-                "\"PROVINCE_CODE\" INTEGER NOT NULL );"); // 2: provinceCode
+                "\"province_name\" TEXT," + // 1: provinceName
+                "\"province_Code\" INTEGER NOT NULL );"); // 2: provinceCode
     }
 
     /** Drops the underlying database table. */

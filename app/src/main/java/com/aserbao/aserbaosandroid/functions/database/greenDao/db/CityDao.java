@@ -25,9 +25,9 @@ public class CityDao extends AbstractDao<City, Integer> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, int.class, "id", true, "ID");
-        public final static Property CityName = new Property(1, String.class, "cityName", false, "CITY_NAME");
-        public final static Property CityCode = new Property(2, int.class, "cityCode", false, "CITY_CODE");
-        public final static Property ProvinceId = new Property(3, int.class, "provinceId", false, "PROVINCE_ID");
+        public final static Property CityName = new Property(1, String.class, "cityName", false, "city_name");
+        public final static Property CityCode = new Property(2, int.class, "cityCode", false, "city_code");
+        public final static Property ProvinceId = new Property(3, int.class, "provinceId", false, "province_id");
     }
 
 
@@ -44,9 +44,9 @@ public class CityDao extends AbstractDao<City, Integer> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CITY\" (" + //
                 "\"ID\" INTEGER PRIMARY KEY NOT NULL ," + // 0: id
-                "\"CITY_NAME\" TEXT," + // 1: cityName
-                "\"CITY_CODE\" INTEGER NOT NULL ," + // 2: cityCode
-                "\"PROVINCE_ID\" INTEGER NOT NULL );"); // 3: provinceId
+                "\"city_name\" TEXT," + // 1: cityName
+                "\"city_code\" INTEGER NOT NULL ," + // 2: cityCode
+                "\"province_id\" INTEGER NOT NULL );"); // 3: provinceId
     }
 
     /** Drops the underlying database table. */

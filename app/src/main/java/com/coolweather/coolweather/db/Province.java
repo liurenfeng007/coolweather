@@ -4,12 +4,15 @@ package com.coolweather.coolweather.db;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Property;
 
 @Entity
 public class Province {
     @Id
     private int id;//实体类id
+    @Property(nameInDb = "province_name")
     private String provinceName;//记录省份名字
+    @Property(nameInDb = "province_Code")
     private int provinceCode;//记录省代码
 
     @Generated(hash = 87637210)

@@ -4,13 +4,17 @@ package com.coolweather.coolweather.db;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Property;
 
 @Entity
 public class City {
     @Id
     private int id;
+    @Property(nameInDb = "city_name")
     private String cityName;
+    @Property(nameInDb = "city_code")
     private int cityCode;
+    @Property(nameInDb = "province_id")
     private int provinceId;
 
     @Generated(hash = 1938565176)

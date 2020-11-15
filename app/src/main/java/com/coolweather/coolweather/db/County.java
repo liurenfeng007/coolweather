@@ -4,14 +4,19 @@ package com.coolweather.coolweather.db;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Property;
 
 @Entity
 public class County {
     @Id
     private int id; //实体类id
+    @Property(nameInDb = "county_name")
     private String countyName;//区县名称
+    @Property(nameInDb = "county_code")
     private int countyCode;//区县代码
+    @Property(nameInDb = "weather_id")
     private String weatherId;//区县天气信息
+    @Property(nameInDb = "city_id")
     private int cityId;//区县上级市代码
 
     @Generated(hash = 1261057773)

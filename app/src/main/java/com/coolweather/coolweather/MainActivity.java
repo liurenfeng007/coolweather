@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoManager;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // GreenDao
         initGreenDao();
+//        DaoManager.getInstance(this);
+//        DaoManager.getInstance(this).getDaoMaster();
     }
 
     private void initGreenDao() {

@@ -25,10 +25,10 @@ public class CountyDao extends AbstractDao<County, Integer> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, int.class, "id", true, "ID");
-        public final static Property CountyName = new Property(1, String.class, "countyName", false, "COUNTY_NAME");
-        public final static Property CountyCode = new Property(2, int.class, "countyCode", false, "COUNTY_CODE");
-        public final static Property WeatherId = new Property(3, String.class, "weatherId", false, "WEATHER_ID");
-        public final static Property CityId = new Property(4, int.class, "cityId", false, "CITY_ID");
+        public final static Property CountyName = new Property(1, String.class, "countyName", false, "county_name");
+        public final static Property CountyCode = new Property(2, int.class, "countyCode", false, "county_code");
+        public final static Property WeatherId = new Property(3, String.class, "weatherId", false, "weather_id");
+        public final static Property CityId = new Property(4, int.class, "cityId", false, "city_id");
     }
 
 
@@ -45,10 +45,10 @@ public class CountyDao extends AbstractDao<County, Integer> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"COUNTY\" (" + //
                 "\"ID\" INTEGER PRIMARY KEY NOT NULL ," + // 0: id
-                "\"COUNTY_NAME\" TEXT," + // 1: countyName
-                "\"COUNTY_CODE\" INTEGER NOT NULL ," + // 2: countyCode
-                "\"WEATHER_ID\" TEXT," + // 3: weatherId
-                "\"CITY_ID\" INTEGER NOT NULL );"); // 4: cityId
+                "\"county_name\" TEXT," + // 1: countyName
+                "\"county_code\" INTEGER NOT NULL ," + // 2: countyCode
+                "\"weather_id\" TEXT," + // 3: weatherId
+                "\"city_id\" INTEGER NOT NULL );"); // 4: cityId
     }
 
     /** Drops the underlying database table. */
