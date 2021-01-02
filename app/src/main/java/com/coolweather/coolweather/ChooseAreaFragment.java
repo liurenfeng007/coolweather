@@ -130,7 +130,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_PROVINCE;
         } else {
             String address = "http://guolin.tech/api/china";
-            queryFromSever(address, "province");
+            queryFromServer(address, "province");
         }
 
     }
@@ -152,7 +152,7 @@ public class ChooseAreaFragment extends Fragment {
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
             String address = "http://guolin.tech/api/china/" + provinceCode;
-            queryFromSever(address, "city");
+            queryFromServer(address, "city");
         }
     }
 
@@ -174,7 +174,7 @@ public class ChooseAreaFragment extends Fragment {
             int provinceCode = selectedProvince.getProvinceCode();
             int cityCode = selectedCity.getCityCode();
             String address = "http://guolin.tech/api/china/" + provinceCode + "/" + cityCode;
-            queryFromSever(address, "city");
+            queryFromServer(address, "city");
         }
     }
 
@@ -184,7 +184,7 @@ public class ChooseAreaFragment extends Fragment {
      * @param address
      * @param type
      */
-    private void queryFromSever(String address, final String type) {
+    private void queryFromServer(String address, final String type) {
         showProgressDialog();
         HttpUtil.sendOKHttpRequest(address, new Callback() {
             @Override
