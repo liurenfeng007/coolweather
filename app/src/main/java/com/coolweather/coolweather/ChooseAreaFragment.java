@@ -72,6 +72,7 @@ public class ChooseAreaFragment extends Fragment {
 
     private int currentLevel;
 
+    private static DaoSession daoSession;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,6 +90,7 @@ public class ChooseAreaFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        daoSession = MyApplication.getInstances().getDaoSession();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,7 +120,7 @@ public class ChooseAreaFragment extends Fragment {
         titleText.setText("中国");
         backButton.setVisibility(View.GONE);
 //        ProvinceDao provinceDao = DaoManager.getInstance(getContext()).getDaoSession().getProvinceDao();
-        ProvinceDao provinceDao = MainActivity.getDaoSession().getProvinceDao();
+        ProvinceDao provinceDao = daoSession.getProvinceDao();
         provinceList = provinceDao.loadAll();
         if (provinceList.size() > 0) {
             dataList.clear();
@@ -138,7 +140,7 @@ public class ChooseAreaFragment extends Fragment {
     private void queryCities() {
         titleText.setText(selectedProvince.getProvinceName());
         backButton.setVisibility(View.VISIBLE);
-        CityDao cityDao = MainActivity.getDaoSession().getCityDao();
+        CityDao cityDao = daoSession.getCityDao();
         cityList = cityDao.queryBuilder().
                 where(CityDao.Properties.ProvinceId.eq(selectedProvince.getId())).list();
         if (cityList.size() > 0) {
@@ -159,7 +161,7 @@ public class ChooseAreaFragment extends Fragment {
     private void queryCounties() {
         titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
-        CountyDao countyDao = MainActivity.getDaoSession().getCountyDao();
+        CountyDao countyDao =daoSession.getCountyDao();
         countyList = countyDao.queryBuilder().
                 where(CountyDao.Properties.CityId.eq(selectedCity.getId())).list();
         if (countyList.size() > 0) {

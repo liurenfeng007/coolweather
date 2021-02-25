@@ -7,6 +7,7 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.db.CountyDao;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.ProvinceDao;
 import com.coolweather.coolweather.MainActivity;
+import com.coolweather.coolweather.MyApplication;
 import com.coolweather.coolweather.db.City;
 import com.coolweather.coolweather.db.County;
 import com.coolweather.coolweather.db.Province;
@@ -16,10 +17,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Utility {
+    private static DaoSession daoSession = MyApplication.getInstances().getDaoSession();
 
     // 解析服务器返回的省级JSON格式数据，存到数据库中
     public static boolean handleProvinceResponse(String response) {
-        DaoSession daoSession = MainActivity.getDaoSession();
         ProvinceDao provinceDao = daoSession.getProvinceDao();
         if (!TextUtils.isEmpty(response)) {
             try {
@@ -41,7 +42,6 @@ public class Utility {
 
     // 解析和处理服务器返回的市级数据
     public static boolean handleCityResponse(String response, int provinceId){
-        DaoSession daoSession = MainActivity.getDaoSession();
         CityDao cityDao = daoSession.getCityDao();
         if (!TextUtils.isEmpty(response)) {
             try {
@@ -64,7 +64,6 @@ public class Utility {
 
     // 解析和处理服务器返回的县级数据
     public static boolean handleCountyResponse(String response, int cityId){
-        DaoSession daoSession = MainActivity.getDaoSession();
         CountyDao countyDao = daoSession.getCountyDao();
         if (!TextUtils.isEmpty(response)) {
             try {
